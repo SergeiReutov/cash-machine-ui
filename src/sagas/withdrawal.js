@@ -1,11 +1,17 @@
+import * as R from 'ramda';
 import { takeEvery, call, put } from 'redux-saga/effects';
 import { WITHDRAWAL } from 'actions/ActionTypes';
 import { PUT } from 'utils/api';
 
+const formatBanknotesArray = banknotesArray => R.chain(
+  banknote => R.repeat(banknote.value, banknote.quantity),
+  banknotesArray
+);
+
 function* withdrawCash({ amount }) {
   try {
     const response = yield call(PUT, '/api/withdraw', { amount });
-    yield put({ type: WITHDRAWAL.WITHDRAW_CASH.SUCCESS, cash: response });
+    yield put({ type: WITHDRAWAL.WITHDRAW_CASH.SUCCESS, cash: formatBanknotesArray(response) });
   } catch (e) {
     yield put({ type: WITHDRAWAL.WITHDRAW_CASH.FAILURE, error: e.message });
   }

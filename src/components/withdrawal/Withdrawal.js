@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
+import NumberFormat from 'react-number-format';
 
 import { CashType } from 'types/withdrawal';
 import './Withdrawal.css';
@@ -12,7 +13,10 @@ export default function Withdrawal(props) {
 
   return (
     <div className="withdrawal-component">
-      Cash: {cash}
+      Cash:
+      {cash.map((value, index) => (
+        <NumberFormat key={index} value={value} displayType='text' decimalScale={2} fixedDecimalScale />
+      ))}
       <Button onClick={handleWithdrawCash}>
         Push me
       </Button>
