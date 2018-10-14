@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Loader, Message } from 'semantic-ui-react';
-import Withdrawal from 'components/withdrawal/Withdrawal';
+import WithdrawalForm from 'components/withdrawal/WithdrawalForm';
+import WithdrawalResult from 'components/withdrawal/WithdrawalResult';
 import { getCash, getIsLoading, getError } from 'selectors/withdrawal';
 import { withdrawCash } from 'actions/withdrawal';
 
 import { CashType } from 'types/withdrawal';
+import './WithdrawalView.css';
 
 function WithdrawalView(props) {
   const { cash, isLoading, error } = props;
@@ -27,13 +29,16 @@ function WithdrawalView(props) {
     </div>
   );
 
-  const renderContent = () => <Withdrawal cash={cash} onWithdraw={props.withdrawCash} />;
+  const renderForm = () => <WithdrawalForm onWithdraw={props.withdrawCash} />;
+
+  const renderResults = () => <WithdrawalResult cash={cash} />;
 
   return (
     <div className="withdrawal-container">
+      {renderForm()}
       {isLoading
         ? renderLoader()
-        : renderContent()
+        : renderResults()
       }
       {!!error && renderError()}
     </div>
