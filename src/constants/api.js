@@ -1,0 +1,6 @@
+export const REQUEST = {
+  GET: 'REQUEST.GET',
+  POST: 'REQUEST.POST',
+  PUT: 'REQUEST.PUT',
+  DELETE: 'REQUEST.DELETE',
+};

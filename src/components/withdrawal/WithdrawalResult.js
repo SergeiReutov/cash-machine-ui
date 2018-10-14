@@ -7,10 +7,6 @@ import './WithdrawalResult.css';
 export default function WithdrawalResult(props) {
   const { cash } = props;
 
-  if (!cash.length) {
-    return null;
-  }
-
   return (
     <div className="withdrawal-result">
       <div className="withdrawal-result__label">
