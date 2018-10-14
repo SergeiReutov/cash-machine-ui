@@ -11,11 +11,15 @@ Packages used:
 
 ## Quick start
 
-`git clone https://github.com/SergeiReutov/cash-machine-ui.git`
-`cd cash-machine-ui`
-`npm install`
-`npm start`
+```
+git clone https://github.com/SergeiReutov/cash-machine-ui.git
+cd cash-machine-ui
+npm install
+npm start
+```
 
 ## Testing
 
-`npm test`
+```
+npm test
+```
