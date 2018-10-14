@@ -7,7 +7,6 @@ function* withdrawCash({ amount }) {
     const response = yield call(PUT, '/api/withdraw', { amount });
     yield put({ type: WITHDRAWAL.WITHDRAW_CASH.SUCCESS, banknotesArray: response });
   } catch (e) {
-    console.log(e);
     yield put({ type: WITHDRAWAL.WITHDRAW_CASH.FAILURE, error: e.message });
   }
 }
