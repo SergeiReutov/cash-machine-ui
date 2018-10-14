@@ -13,10 +13,23 @@ export default function WithdrawalResult(props) {
 
   return (
     <div className="withdrawal-result">
-      Cash:
-      {cash.map((value, index) => (
-        <NumberFormat key={index} value={value} displayType='text' decimalScale={2} fixedDecimalScale />
-      ))}
+      <div className="withdrawal-result__label">
+        Cash:
+      </div>
+      <div className="withdrawal-result__cash-array">
+        [
+          {cash.map((value, index) => (
+            <NumberFormat
+              key={index}
+              value={value}
+              displayType='text'
+              decimalScale={2}
+              fixedDecimalScale
+              suffix={index < cash.length - 1 ? ', ' : ''}
+            />
+          ))}
+        ]
+      </div>
     </div>
   );
 }
